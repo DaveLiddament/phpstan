@@ -42,6 +42,7 @@ class JsonErrorFormatter implements ErrorFormatter
 				'message' => $fileSpecificError->getMessage(),
 				'line' => $fileSpecificError->getLine(),
 				'ignorable' => $fileSpecificError->canBeIgnored(),
+				'type' => ($fileSpecificError->getRule() === null) ? null : get_class($fileSpecificError->getRule()),
 			];
 		}
 
