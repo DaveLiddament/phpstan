@@ -145,7 +145,7 @@ class Analyser
 											$line = $ruleError->getLine();
 										}
 									}
-									$fileErrors[] = new Error($message, $scope->getFileDescription(), $line);
+									$fileErrors[] = new Error($message, $scope->getFileDescription(), $line, true, $rule);
 								}
 							}
 						}

@@ -2,6 +2,8 @@
 
 namespace PHPStan\Analyser;
 
+use PHPStan\Rules\Rule;
+
 class Error
 {
 
@@ -17,12 +19,16 @@ class Error
 	/** @var bool */
 	private $canBeIgnored;
 
-	public function __construct(string $message, string $file, ?int $line = null, bool $canBeIgnored = true)
+	/** @var Rule|null */
+	private $rule;
+
+	public function __construct(string $message, string $file, ?int $line = null, bool $canBeIgnored = true, ?Rule $rule = null)
 	{
 		$this->message = $message;
 		$this->file = $file;
 		$this->line = $line;
 		$this->canBeIgnored = $canBeIgnored;
+		$this->rule = $rule;
 	}
 
 	public function getMessage(): string
@@ -43,6 +49,11 @@ class Error
 	public function canBeIgnored(): bool
 	{
 		return $this->canBeIgnored;
+	}
+
+	public function getRule(): ?Rule
+	{
+		return $this->rule;
 	}
 
 }
